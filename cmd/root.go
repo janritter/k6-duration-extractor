@@ -79,7 +79,8 @@ var rootCmd = &cobra.Command{
 
 		output = append(output, result...)
 
-		writeCSVFile("k6-duration-extractor.csv", output)
+		resultFilename := getNameFromFilename(filename) + "-extracted.csv"
+		writeCSVFile(resultFilename, output)
 	},
 }
 
@@ -117,4 +118,8 @@ func writeCSVFile(filename string, records [][]string) {
 	writer.Flush()
 
 	fmt.Println("Wrote " + strconv.Itoa(len(records)) + " records to " + filename)
+}
+
+func getNameFromFilename(filename string) string {
+	return filename[:len(filename)-len(".csv")]
 }
