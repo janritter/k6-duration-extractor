@@ -10,6 +10,17 @@
 
 ## Installation
 
+### Clone git repo
+```bash
+git clone git@github.com:janritter/k6-duration-extractor.git
+```
+
+### Open project directory
+```bash
+cd k6-duration-extractor
+```
+
+### Install via go
 ```bash
 go install
 ```
