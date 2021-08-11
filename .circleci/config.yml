@@ -1,0 +1,69 @@
+version: 2.0
+
+jobs:
+  test:
+    docker:
+      - image: cimg/go:1.16.6
+    working_directory: ~/go/src/github.com/janritter/k6-duration-extractor
+    steps:
+      - checkout
+      - run:
+          name: Install CodeClimate reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Install dependencies
+          command: |
+            make prepare
+      - run:
+          name: "Create a temp directory for artifacts"
+          command: |
+            mkdir -p /tmp/artifacts
+            mkdir -p /tmp/test-results
+      # - run:
+      #     name: Run tests
+      #     command: |
+      #       PACKAGE_NAMES=$(go list ./... | circleci tests split --split-by=timings --timings-type=classname)
+      #       ./cc-test-reporter before-build
+      #       gotestsum --junitfile /tmp/test-results/gotestsum-report.xml -- -coverprofile=c.out $PACKAGE_NAMES
+      #        ./cc-test-reporter after-build --exit-code $?
+      #       go tool cover -html=c.out -o coverage.html
+      #       mv coverage.html /tmp/artifacts 
+      - store_artifacts:
+          path: /tmp/artifacts
+      - store_test_results:
+          path: /tmp/test-results
+
+  release:
+    docker:
+      - image: cimg/node:12.22.1
+    steps:
+      - checkout
+      - run: "npm install @semantic-release/changelog &&
+              npm install @semantic-release/git &&
+              npx semantic-release"
+
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only:
+              - /feat\/.*/
+              - /chore\/.*/
+              - /fix\/.*/
+              - /test\/.*/
+              - /refactor\/.*/
+              - /perf\/.*/
+              - main
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+              - main

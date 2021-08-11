@@ -1,5 +1,8 @@
 # k6-duration-extractor
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a491d029cae01b6b464a/maintainability)](https://codeclimate.com/github/janritter/k6-duration-extractor/maintainability)
+[![CircleCI](https://circleci.com/gh/janritter/k6-duration-extractor/tree/main.svg?style=svg)](https://circleci.com/gh/janritter/k6-duration-extractor/tree/main)
+
 > Tool to extract the duration information per request from the K6 csv output
 
 ## Prerequisites
