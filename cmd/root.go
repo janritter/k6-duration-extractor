@@ -30,27 +30,6 @@ import (
 	"strconv"
 )
 
-//metric_name timestamp duration check error error_code group method name proto scenario status subproto tls_version url extra_tags
-type record struct {
-	timestamp     string
-	duration  string
-	check         string
-	error_message string
-	error_code    string
-	group         string
-	method        string
-	name          string
-	proto         string
-	scenario      string
-	status        string
-	subproto      string
-	tls_version   string
-	url           string
-	extra_tags    string
-}
-
-var cfgFile string
-
 var rootCmd = &cobra.Command{
 	Use:   "k6-duration-extractor",
 	Short: "Tool to extract the duration information per request from the K6 csv output",
@@ -68,26 +47,26 @@ var rootCmd = &cobra.Command{
 
 		records := readCSVFile(filename)
 
-		var result []record
+		var result [][]string
 
 		for k, v := range records {
 			if k != 0 && v[0] == "http_req_duration" {
-				data := record{
-					timestamp:     v[1],
-					duration:  	   v[2],
-					check:         v[3],
-					error_message: v[4],
-					error_code:    v[5],
-					group:         v[6],
-					method:        v[7],
-					name:          v[8],
-					proto:         v[9],
-					scenario:      v[10],
-					status:        v[11],
-					subproto:      v[12],
-					tls_version:   v[13],
-					url:           v[14],
-					extra_tags:    v[15],
+				data := []string{
+					v[1],
+					v[2],
+					v[3],
+					v[4],
+					v[5],
+					v[6],
+					v[7],
+					v[8],
+					v[9],
+					v[10],
+					v[11],
+					v[12],
+					v[13],
+					v[14],
+					v[15],
 				}
 
 				result = append(result, data)
@@ -96,11 +75,9 @@ var rootCmd = &cobra.Command{
 
 		var output [][]string
 
-		output = append(output,[]string{"timestamp", "duration", "check", "error_message", "error_code", "group", "method", "name", "proto", "scenario", "status", "subproto", "tls_version", "url", "extra_tags"})
+		output = append(output, []string{"timestamp", "duration", "check", "error_message", "error_code", "group", "method", "name", "proto", "scenario", "status", "subproto", "tls_version", "url", "extra_tags"})
 
-		for _, v := range result {
-			output = append(output, recordStructToSlice(v))
-		}
+		output = append(output, result...)
 
 		writeCSVFile("k6-duration-extractor.csv", output)
 	},
@@ -140,26 +117,4 @@ func writeCSVFile(filename string, records [][]string) {
 	writer.Flush()
 
 	fmt.Println("Wrote " + strconv.Itoa(len(records)) + " records to " + filename)
-
-}
-
-
-func recordStructToSlice(record record) []string {
-	return []string{
-		record.timestamp,
-		record.duration,
-		record.check,
-		record.error_message,
-		record.error_code,
-		record.group,
-		record.method,
-		record.name,
-		record.proto,
-		record.scenario,
-		record.status,
-		record.subproto,
-		record.tls_version,
-		record.url,
-		record.extra_tags,
-	}
 }
