@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/janritter/k6-duration-extractor/compare/1.0.0...1.0.1) (2021-08-16)
+
+
+### Bug Fixes
+
+* added missing expected_response column ([e20e0bc](https://github.com/janritter/k6-duration-extractor/commit/e20e0bce3c85eea1cf3124359fb0e99eb3dc93ca))
+
 # 1.0.0 (2021-08-11)
 
 
