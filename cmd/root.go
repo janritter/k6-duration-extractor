@@ -75,7 +75,7 @@ var rootCmd = &cobra.Command{
 
 		var output [][]string
 
-		output = append(output, []string{"timestamp", "duration", "check", "error_message", "error_code", "group", "method", "name", "proto", "scenario", "status", "subproto", "tls_version", "url", "extra_tags"})
+		output = append(output, []string{"timestamp", "duration", "check", "error_message", "error_code", "expected_response", "group", "method", "name", "proto", "scenario", "status", "subproto", "tls_version", "url", "extra_tags"})
 
 		output = append(output, result...)
 
