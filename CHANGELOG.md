@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/janritter/k6-duration-extractor/compare/1.0.1...1.1.0) (2021-08-26)
+
+
+### Features
+
+* made csv extraction more generic to allow minor changes to csv headers ([0ac8340](https://github.com/janritter/k6-duration-extractor/commit/0ac83409b643070046896eb89961eedc5f84c40f))
+
 ## [1.0.1](https://github.com/janritter/k6-duration-extractor/compare/1.0.0...1.0.1) (2021-08-16)
 
 
