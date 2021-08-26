@@ -24,10 +24,11 @@ package cmd
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/spf13/cobra"
 	"log"
 	"os"
 	"strconv"
+
+	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
@@ -50,37 +51,23 @@ var rootCmd = &cobra.Command{
 		var result [][]string
 
 		for k, v := range records {
-			if k != 0 && v[0] == "http_req_duration" {
-				data := []string{
-					v[1],
-					v[2],
-					v[3],
-					v[4],
-					v[5],
-					v[6],
-					v[7],
-					v[8],
-					v[9],
-					v[10],
-					v[11],
-					v[12],
-					v[13],
-					v[14],
-					v[15],
+			// append headers
+			if k == 0 {
+				for hk, hv := range v {
+					if hv == "metric_value" {
+						v[hk] = "duration"
+					}
 				}
+				result = append(result, removeSliceElement(v, 0))
+			}
 
-				result = append(result, data)
+			if k != 0 && v[0] == "http_req_duration" {
+				result = append(result, removeSliceElement(v, 0))
 			}
 		}
 
-		var output [][]string
-
-		output = append(output, []string{"timestamp", "duration", "check", "error_message", "error_code", "expected_response", "group", "method", "name", "proto", "scenario", "status", "subproto", "tls_version", "url", "extra_tags"})
-
-		output = append(output, result...)
-
 		resultFilename := getNameFromFilename(filename) + "-extracted.csv"
-		writeCSVFile(resultFilename, output)
+		writeCSVFile(resultFilename, result)
 	},
 }
 
@@ -122,4 +109,8 @@ func writeCSVFile(filename string, records [][]string) {
 
 func getNameFromFilename(filename string) string {
 	return filename[:len(filename)-len(".csv")]
+}
+
+func removeSliceElement(slice []string, s int) []string {
+	return append(slice[:s], slice[s+1:]...)
 }
