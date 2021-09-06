@@ -1,4 +1,4 @@
-# k6-duration-extractor
+# K6 duration extractor
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a491d029cae01b6b464a/maintainability)](https://codeclimate.com/github/janritter/k6-duration-extractor/maintainability)
 [![CircleCI](https://circleci.com/gh/janritter/k6-duration-extractor/tree/main.svg?style=svg)](https://circleci.com/gh/janritter/k6-duration-extractor/tree/main)
@@ -23,6 +23,18 @@ cd k6-duration-extractor
 ### Install via go
 ```bash
 go install
+```
+
+## Installation via Homebrew (For Mac / Linux)
+
+### Get the formula
+```bash
+brew tap janritter/k6-duration-extractor https://github.com/janritter/k6-duration-extractor
+```
+
+### Install formula
+```bash
+brew install k6-duration-extractor
 ```
 
 ## Usage
@@ -53,3 +65,9 @@ timestamp,duration,check,error_message,error_code,group,method,name,proto,scenar
 1595325560,221.899000,,,,,GET,http://test.k6.io,HTTP/1.1,default,200,,,http://test.k6.io,
 
 ```
+
+## License and Author
+
+Author: Jan Ritter
+
+License: MIT
