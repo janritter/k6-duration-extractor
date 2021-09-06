@@ -19,6 +19,8 @@
             "name": "janritter/k6-duration-extractor"
         }
     ],
-    "branches": ["main"],
+    "branches": [
+        "main"
+    ],
     "tagFormat": "${version}"
 }
