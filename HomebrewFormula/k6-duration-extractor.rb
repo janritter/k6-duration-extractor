@@ -5,11 +5,11 @@ class K6DurationExtractor < Formula
     desc "Tool to extract the duration information per request from the K6 csv output"
     if OS.mac?
       url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.0/darwin_amd64_k6-duration-extractor"
-      sha256 "8c44adf909d7053aba6c8c1c5158bb0ceec619fa46ab38c63264ccb72b1bb560"
+      sha256 "75c34070c23aa95b1903a687a5707328a564b13bfb1e132b2c251d2c9b40c2cb"
       version "1.1.0"
     elsif OS.linux?
       url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.0/linux_amd64_k6-duration-extractor"
-      sha256 "918dc595679783743a94d82f3eaf83f97011ab1ef687c81b11bce8b91d9ad635"
+      sha256 "a20cb515d3a3cc9cf9e8cca28a198c94e3dcee00edd153bbbd0a28570a736a4f"
       version "1.1.0"
     end
 
