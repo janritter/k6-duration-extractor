@@ -10,6 +10,8 @@ import (
 )
 
 func TestRemoveSliceElement(t *testing.T) {
+	t.Parallel()
+
 	test := []string{"a", "b", "c"}
 	result := removeSliceElement(test, 1)
 
@@ -17,6 +19,8 @@ func TestRemoveSliceElement(t *testing.T) {
 }
 
 func TestGetNameFromFilename(t *testing.T) {
+	t.Parallel()
+
 	test := "test1.csv"
 	result := getNameFromFilename(test)
 
@@ -24,6 +28,8 @@ func TestGetNameFromFilename(t *testing.T) {
 }
 
 func TestReadCSVFile(t *testing.T) {
+	t.Parallel()
+
 	filename := "../tests/short.csv"
 	result := readCSVFile(filename)
 
@@ -69,6 +75,8 @@ func TestReadCSVFile(t *testing.T) {
 }
 
 func TestWriteCSVFile(t *testing.T) {
+	t.Parallel()
+
 	filename := "../tests/write.csv"
 	data := [][]string{
 		{
@@ -99,6 +107,8 @@ func TestWriteCSVFile(t *testing.T) {
 }
 
 func TestRunCommand(t *testing.T) {
+	t.Parallel()
+
 	filename := "../tests/result.csv"
 	filenameExtracted := "../tests/result-extracted.csv"
 	rootCmd.Run(nil, []string{filename})
