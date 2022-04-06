@@ -53,8 +53,8 @@ jobs:
           name: Install additional packages
           command: |
             sudo apt-get update && sudo apt-get install python3 python3-pip git python3-jinja2 -y
-            go get github.com/mitchellh/gox
-            go get github.com/tcnksm/ghr
+            go install github.com/mitchellh/gox
+            go install github.com/tcnksm/ghr
       - checkout
       - run:
           name: Get latest master version, which includes the git tag from the semantic-release step
