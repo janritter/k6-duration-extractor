@@ -1,0 +1,2 @@
+metric_name,timestamp,metric_value,check,error,error_code,group,method,name,proto,scenario,status,subproto,tls_version,url,extra_tags
+http_reqs,1595325560,1.000000,,,,,GET,http://test.k6.io,HTTP/1.1,default,200,,,http://test.k6.io,
