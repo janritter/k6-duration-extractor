@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/janritter/k6-duration-extractor/compare/1.1.0...1.1.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* trigger releae via goreleaser ([a7b85b3](https://github.com/janritter/k6-duration-extractor/commit/a7b85b31c2d741cb3943628492fd311d00a89673))
+
 # [1.1.0](https://github.com/janritter/k6-duration-extractor/compare/1.0.1...1.1.0) (2021-08-26)
 
 
