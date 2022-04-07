@@ -49,48 +49,23 @@ jobs:
       - image: cimg/go:1.18
     working_directory: ~/go/src/github.com/janritter/k6-duration-extractor
     steps:
-      - run:
-          name: Install additional packages
-          command: |
-            sudo apt-get update && sudo apt-get install python3 python3-pip git python3-jinja2 -y
-            go install github.com/mitchellh/gox@latest
-            go install github.com/tcnksm/ghr@latest
       - checkout
+      - run:
+          name: Install goreleaser and cosign
+          command: |
+            go install github.com/goreleaser/goreleaser@latest
+            wget https://github.com/sigstore/cosign/releases/download/v1.7.1/cosign-linux-amd64
+            sudo mv cosign-linux-amd64 /usr/bin/cosign && sudo chmod +x /usr/bin/cosign
       - run:
           name: Get latest master version, which includes the git tag from the semantic-release step
           command: |
             git checkout main
             git pull
       - run:
-          name: Install dependencies
+          name: Run goreleaser
           command: |
-            make prepare
-      - run:
-          name: Configure git user
-          command: |
-            git config --global user.email "git+circleci@janrtr.de"
-            git config --global user.name "CircleCI"
-            git remote set-url origin https://janritter:${GITHUB_TOKEN}@github.com/janritter/k6-duration-extractor.git
-      - run:
-          name: Build binaries
-          command: |
-            export NOW=$(date +'%Y-%m-%d_%T')
-            gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}" -ldflags "-X github.com/janritter/k6-duration-extractor/cmd.gitSha=`git rev-parse HEAD` -X github.com/janritter/k6-duration-extractor/cmd.buildTime=$NOW -X github.com/janritter/k6-duration-extractor/cmd.version=`git describe --abbrev=0 --tags`" -arch="amd64 arm64" -os="linux darwin windows"
-      - run:
-          name: Upload binaries to GitHub
-          command: |
-            ghr --username janritter --token $GITHUB_TOKEN --replace $(git describe --abbrev=0 --tags) dist/
-      - run:
-          name: Create new Homebrew formula
-          command: |
-            export FILE_HASH_MAC=`sha256sum dist/darwin_amd64_k6-duration-extractor | awk '{print $1}'`
-            export FILE_HASH_LINUX=`sha256sum dist/linux_amd64_k6-duration-extractor | awk '{print $1}'`
-            export VERSION=`git describe --abbrev=0 --tags`
-            cd .circleci
-            mkdir -p ../HomebrewFormula
-            python3 generateFormula.py
-            cd ..
-            git add HomebrewFormula && git commit -m "chore: deployment of version $VERSION Homebrew Forumla [skip ci]" && git push
+            echo $COSIGN_KEY > cosign.key
+            goreleaser release
 
 workflows:
   version: 2
@@ -122,3 +97,5 @@ workflows:
             branches:
               only:
               - main
+          context:
+            - cosign
