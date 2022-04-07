@@ -1,3 +1,11 @@
+## [1.1.1](https://github.com/janritter/k6-duration-extractor/compare/1.1.0...1.1.1) (2022-04-07)
+
+
+### Bug Fixes
+
+* fixed location of cosign key ([94937ea](https://github.com/janritter/k6-duration-extractor/commit/94937ead53941999ca47c6fe287b2f8af888f45a))
+* trigger releae via goreleaser ([a7b85b3](https://github.com/janritter/k6-duration-extractor/commit/a7b85b31c2d741cb3943628492fd311d00a89673))
+
 ## [1.1.2](https://github.com/janritter/k6-duration-extractor/compare/1.1.1...1.1.2) (2022-04-07)
 
 
