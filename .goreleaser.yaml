@@ -1,0 +1,46 @@
+before:
+  hooks:
+    - go mod tidy
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ incpatch .Version }}-next"
+
+brews:
+  - tap:
+      owner: janritter
+      name: k6-duration-extractor
+
+    commit_author:
+      name: goreleaserbot
+      email: goreleaser@janri.de
+
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+
+    folder: HomebrewFormula
+
+    homepage: "https://github.com/janritter/k6-duration-extractor"
+
+    description: "Tool to extract the duration information per request from the K6 csv output."
+
+    license: "MIT"
+
+    install: |
+      bin.install "k6-duration-extractor"
+
+signs:
+  - cmd: cosign
+    stdin: "{{ .Env.COSIGN_PWD }}"
+    args:
+      ["sign-blob", "--key=cosign.key", "--output=${signature}", "${artifact}"]
+    artifacts: all
