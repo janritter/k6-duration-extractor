@@ -64,7 +64,7 @@ jobs:
       - run:
           name: Add cosign key
           command: |
-            echo $COSIGN_KEY > cosign.key
+            echo $COSIGN_KEY | base64 --decode > cosign.key
       - run:
           name: Run goreleaser
           command: |
