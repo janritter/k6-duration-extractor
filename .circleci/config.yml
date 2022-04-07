@@ -62,9 +62,12 @@ jobs:
             git checkout main
             git pull
       - run:
+          name: Add cosign key
+          command: |
+            echo $COSIGN_KEY > ~/cosign.key
+      - run:
           name: Run goreleaser
           command: |
-            echo $COSIGN_KEY > cosign.key
             goreleaser release
 
 workflows:
