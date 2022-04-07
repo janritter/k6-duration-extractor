@@ -25,7 +25,7 @@ brews:
       name: goreleaserbot
       email: goreleaser@janri.de
 
-    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }}"
+    commit_msg_template: "Brew formula update for {{ .ProjectName }} version {{ .Tag }} [skip ci]"
 
     folder: HomebrewFormula
 
