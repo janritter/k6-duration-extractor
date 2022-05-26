@@ -80,13 +80,6 @@ workflows:
                 - /perf\/.*/
                 - /dependabot\/.*/
                 - main
-      - semantic-release:
-          requires:
-            - test
-          filters:
-            branches:
-              only:
-                - main
       - semantic-release/with-changelog-github-config:
           name: semantic-release
           requires:
