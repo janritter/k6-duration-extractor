@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/janritter/k6-duration-extractor/compare/1.1.2...1.1.3) (2022-07-07)
+
+
+### Bug Fixes
+
+* **deps:** update module github.com/stretchr/testify to v1.8.0 ([4e16793](https://github.com/janritter/k6-duration-extractor/commit/4e167937ee0289dbb6e9b79bc46abf4e8152495f))
+
 ## [1.1.2](https://github.com/janritter/k6-duration-extractor/compare/1.1.1...1.1.2) (2022-06-23)
 
 
