@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/janritter/k6-duration-extractor/compare/1.1.3...1.1.4) (2023-01-08)
+
+
+### Bug Fixes
+
+* rotated cosign key after CircleCI security incident and used github-release context ([b4ce52a](https://github.com/janritter/k6-duration-extractor/commit/b4ce52a33d44f4d5f823588946b8760617d15c61))
+
 ## [1.1.3](https://github.com/janritter/k6-duration-extractor/compare/1.1.2...1.1.3) (2022-07-07)
 
 
