@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/janritter/k6-duration-extractor/compare/1.1.4...1.1.5) (2023-02-16)
+
+
+### Bug Fixes
+
+* **deps:** update minor - go ([9f672ec](https://github.com/janritter/k6-duration-extractor/commit/9f672ecabb0912c2edb83668571dfce80974c937))
+
 ## [1.1.4](https://github.com/janritter/k6-duration-extractor/compare/1.1.3...1.1.4) (2023-01-08)
 
 
