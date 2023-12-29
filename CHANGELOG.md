@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/janritter/k6-duration-extractor/compare/1.1.6...1.1.7) (2023-12-29)
+
+
+### Bug Fixes
+
+* **deps:** updated go packages and changed go to version 1.21 ([4edbe09](https://github.com/janritter/k6-duration-extractor/commit/4edbe093549bf5b1b418e4f5ce7e1b315c174b1e))
+
 ## [1.1.6](https://github.com/janritter/k6-duration-extractor/compare/1.1.5...1.1.6) (2023-04-05)
 
 
