@@ -1,10 +1,10 @@
 module github.com/janritter/k6-duration-extractor
 
-go 1.19
+go 1.21
 
 require (
-	github.com/spf13/cobra v1.7.0
-	github.com/stretchr/testify v1.8.2
+	github.com/spf13/cobra v1.8.0
+	github.com/stretchr/testify v1.8.4
 )
 
 require (
