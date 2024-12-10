@@ -5,21 +5,21 @@
 class K6DurationExtractor < Formula
   desc "Tool to extract the duration information per request from the K6 csv output."
   homepage "https://github.com/janritter/k6-duration-extractor"
-  version "1.1.7"
+  version "1.1.8"
   license "MIT"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.7/k6-duration-extractor_1.1.7_darwin_arm64.tar.gz"
-      sha256 "8dc132a9730a67f9998e24be8c787b5503838fe0010b076d9d177820750211e2"
+    on_intel do
+      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.8/k6-duration-extractor_1.1.8_darwin_amd64.tar.gz"
+      sha256 "558654d00308cc35e2e81c23ced4d893f20552eef259dc09d29279c37975c379"
 
       def install
         bin.install "k6-duration-extractor"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.7/k6-duration-extractor_1.1.7_darwin_amd64.tar.gz"
-      sha256 "e92a31da9ac1a966c2d3a56b0c129684ea91d14905df1316e4eeddc00a123123"
+    on_arm do
+      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.8/k6-duration-extractor_1.1.8_darwin_arm64.tar.gz"
+      sha256 "089a83b17c615c1fcf16b82b58b1ff7bafef44e82a63fb421baa831a159b627f"
 
       def install
         bin.install "k6-duration-extractor"
@@ -28,20 +28,24 @@ class K6DurationExtractor < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.7/k6-duration-extractor_1.1.7_linux_amd64.tar.gz"
-      sha256 "dc85a093b4c03dcf23cbacc7e1e557e32ac0de1eaec5ff65c189c26b9bd0ada5"
+    on_intel do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.8/k6-duration-extractor_1.1.8_linux_amd64.tar.gz"
+        sha256 "aa983e5548478c292695869cc094791c740e989bb667e3a577a6cb34961061af"
 
-      def install
-        bin.install "k6-duration-extractor"
+        def install
+          bin.install "k6-duration-extractor"
+        end
       end
     end
-    if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.7/k6-duration-extractor_1.1.7_linux_arm64.tar.gz"
-      sha256 "fb7b1ed76fe3b61939befa8171310f63de2e061dc17a58187ace2fbb442a7128"
+    on_arm do
+      if Hardware::CPU.is_64_bit?
+        url "https://github.com/janritter/k6-duration-extractor/releases/download/1.1.8/k6-duration-extractor_1.1.8_linux_arm64.tar.gz"
+        sha256 "7f462d19b3aa6d469b39852120e26f2c241d803b736b5308486d330bc4a96547"
 
-      def install
-        bin.install "k6-duration-extractor"
+        def install
+          bin.install "k6-duration-extractor"
+        end
       end
     end
   end
