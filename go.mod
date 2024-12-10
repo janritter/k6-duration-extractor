@@ -3,8 +3,8 @@ module github.com/janritter/k6-duration-extractor
 go 1.21
 
 require (
-	github.com/spf13/cobra v1.8.0
-	github.com/stretchr/testify v1.8.4
+	github.com/spf13/cobra v1.8.1
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
